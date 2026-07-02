@@ -1,0 +1,401 @@
+{
+  "info": {
+    "_postman_id": "edumetrics-collection",
+    "name": "EduMetrics API",
+    "description": "Collection para testar a EduMetrics API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://edumetrics.testespace.com.br"
+    },
+    {
+      "key": "alunoId",
+      "value": "1"
+    },
+    {
+      "key": "disciplinaId",
+      "value": "1"
+    },
+    {
+      "key": "matricula",
+      "value": "20269999"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Actuator Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/actuator/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "actuator",
+                "health"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Admin Health",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/health",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "health"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Alunos",
+      "item": [
+        {
+          "name": "Cadastrar Aluno",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"matricula\": \"{{matricula}}\",\n  \"nome\": \"Novo Aluno\",\n  \"email\": \"novo.aluno@iftm.edu.br\",\n  \"curso\": \"TSI\",\n  \"periodo\": 4\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Aluno por ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos/{{alunoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos",
+                "{{alunoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Buscar Aluno por Matricula",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos/matricula/{{matricula}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos",
+                "matricula",
+                "{{matricula}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Atualizar Aluno",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": {{alunoId}},\n  \"matricula\": \"{{matricula}}\",\n  \"nome\": \"Aluno Atualizado\",\n  \"email\": \"aluno.atualizado@iftm.edu.br\",\n  \"curso\": \"TSI\",\n  \"periodo\": 5\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos/{{alunoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos",
+                "{{alunoId}}"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Remover Aluno",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos/{{alunoId}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos",
+                "{{alunoId}}"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Disciplinas",
+      "item": [
+        {
+          "name": "Cadastrar Disciplina",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"codigo\": \"EST001\",\n  \"nome\": \"Estruturas de Dados Avancadas\",\n  \"creditos\": 4\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/disciplinas",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "disciplinas"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Autocompletar Disciplinas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/disciplinas/autocompletar?q=Est",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "disciplinas",
+                "autocompletar"
+              ],
+              "query": [
+                {
+                  "key": "q",
+                  "value": "Est"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Desempenhos e Ranking",
+      "item": [
+        {
+          "name": "Registrar Desempenho",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alunoId\": {{alunoId}},\n  \"disciplinaId\": {{disciplinaId}},\n  \"nota1\": 8.5,\n  \"nota2\": 9.0,\n  \"semestre\": \"2026/1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/desempenhos",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "desempenhos"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Listar Desempenho por Aluno",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/alunos/{{alunoId}}/desempenho",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "alunos",
+                "{{alunoId}}",
+                "desempenho"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Top K Ranking",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/ranking?top=5",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "ranking"
+              ],
+              "query": [
+                {
+                  "key": "top",
+                  "value": "5"
+                }
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Relatorios",
+      "item": [
+        {
+          "name": "Solicitar Relatorio",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"alunoId\": {{alunoId}},\n  \"tipo\": \"BOLETIM\",\n  \"semestre\": \"2026/1\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/relatorios",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "relatorios"
+              ]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Cache Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/cache/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "cache",
+                "stats"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Limpar Cache",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/cache",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "cache"
+              ]
+            }
+          }
+        },
+        {
+          "name": "Rate Limiter Stats",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/rate-limiter/stats",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "api",
+                "admin",
+                "rate-limiter",
+                "stats"
+              ]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
