@@ -1,0 +1,26 @@
+# Maven
+target/
+!.mvn/wrapper/maven-wrapper.jar
+.mvn/wrapper/maven-wrapper.jar
+
+# Resultados de benchmark intermediarios (o jmh-resultado.json oficial e versionado)
+*.jmh
+resultado.json
+
+# IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+.settings/
+.project
+.classpath
+bin/
+
+# SO
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
