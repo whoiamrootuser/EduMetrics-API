@@ -15,7 +15,8 @@ Instituto Federal do Triângulo Mineiro (IFTM) — Campus Uberlândia Centro
 | **Integrante 2** | Alexandre Silva Froes |
 | **Integrante 3** | Laura Gabriely Barbosa Freitas |
 | **Integrante 4** | João Henrique Batista Junior |
-| **Data de entrega** | 01 / 07 / 2026 |
+| **Repositório GitHub** | https://github.com/Suethamh/Back-End (pasta `estrutura de dados/EduMetrics-API`) |
+| **Data de entrega** | 02 / 07 / 2026 |
 
 ---
 
